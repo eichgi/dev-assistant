@@ -1,5 +1,7 @@
 # DevAssistant
 
+[![Abrir en Codespaces](https://img.shields.io/badge/Open%20in-Codespaces-181717?logo=github)](https://codespaces.new/tu-usuario/dev-assistant)
+
 > Agente inteligente de documentación técnica con RAG, Function Calling y Claude API.
 
 DevAssistant es una CLI conversacional que combina **Retrieval Augmented Generation (RAG)** con un **agente autónomo** basado en Claude de Anthropic. Utiliza **OpenAI `text-embedding-3-small`** para generar los embeddings del pipeline RAG, y **Claude (Anthropic)** como LLM del agente conversacional. Permite cargar tu documentación técnica en una base de datos vectorial y responder preguntas sobre ella con citas precisas a las fuentes, además de explorar y buscar código de forma autónoma mediante herramientas.
@@ -20,8 +22,9 @@ DevAssistant es una CLI conversacional que combina **Retrieval Augmented Generat
 ## Tabla de contenidos
 
 - [Requisitos previos](#requisitos-previos)
-- [Instalación](#instalación)
-- [Configuración](#configuración)
+- [Ejecución en GitHub Codespaces](#ejecucion-en-github-codespaces)
+- [Instalación local](#instalacion-local)
+- [Configuración](#configuracion)
 - [Uso](#uso)
 - [Comandos disponibles](#comandos-disponibles)
 - [Arquitectura](#arquitectura)
@@ -40,7 +43,38 @@ DevAssistant es una CLI conversacional que combina **Retrieval Augmented Generat
 
 ---
 
-## Instalación
+<a id="ejecucion-en-github-codespaces"></a>
+## Ejecución en GitHub Codespaces
+
+Sin instalar nada localmente — solo necesitas un browser y una cuenta de GitHub.
+
+### 1. Configurar API keys como Secrets
+
+En tu cuenta de GitHub: en el repositorio **Settings → Secrets and variables → Codespaces → Codespaces secrets → New repository secret**
+
+| Secret              | Valor                              |
+| ------------------- | ---------------------------------- |
+| `ANTHROPIC_API_KEY` | `sk-ant-xxx...`                    |
+| `OPENAI_API_KEY`    | `sk-xxx...` (solo para embeddings) |
+
+### 2. Abrir el Codespace
+
+Haz click en el badge de arriba o ve a **Code → Codespaces → New codespace**.
+
+El entorno tarda ~2 minutos en configurarse automáticamente (`npm install`, crear `.env`).
+
+### 3. Ejecutar el agente
+
+```bash
+npm run dev
+```
+
+Las API keys se inyectan automáticamente desde tus Secrets — no necesitas editar `.env`.
+
+---
+
+<a id="instalacion-local"></a>
+## Instalación local
 
 ```bash
 # 1. Clona el repositorio
@@ -53,6 +87,7 @@ npm install
 
 ---
 
+<a id="configuracion"></a>
 ## Configuración
 
 Copia el archivo de variables de entorno y completa tus credenciales:
